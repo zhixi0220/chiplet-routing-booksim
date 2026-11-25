@@ -1,0 +1,28 @@
+// Composite hierarchy deadlock test.
+// A flit crosses source-chiplet NoC -> interposer -> next-chiplet NoC,
+// returns to the interposer, and finally ejects at its configured destination
+// chiplet. The
+// individual chiplet line and dateline interposer are acyclic by themselves,
+// while the combined route creates a cross-layer dependency cycle.
+
+topology = hier_chiplet;
+chiplet = 4;
+int_nodes = 1;
+chiplet_routers = 2;
+interposer_routers = 4;
+interposer_latency = 1;
+
+routing_function = cycle;
+num_vcs = 2;
+vc_buf_size = 1;
+
+traffic = uniform;
+use_read_write = 0;
+packet_size = 2;
+injection_rate = 0.2;
+
+deadlock_warn_timeout = 256;
+sim_type = latency;
+sample_period = 1000;
+max_samples = 10;
+warmup_periods = 3;

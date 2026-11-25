@@ -74,6 +74,13 @@ BookSimConfig::BookSimConfig( )
   _int_map["in_ports"]  = 5;
   _int_map["out_ports"] = 5;
 
+  //==== Hierarchical chiplet + interposer topology options =============
+  _int_map["chiplet"] = 4;                 // number of chiplets
+  _int_map["int_nodes"] = 1;               // terminal nodes per chiplet
+  _int_map["interposer_latency"] = 1;      // interposer link latency
+  _int_map["chiplet_routers"] = 2;         // routers in each chiplet NoC
+  _int_map["interposer_routers"] = 0;      // 0 means one per chiplet
+
   //========================================================
   // Router options
   //========================================================

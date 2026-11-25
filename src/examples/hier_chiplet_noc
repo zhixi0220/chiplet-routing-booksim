@@ -1,0 +1,24 @@
+// Hierarchical chiplet + interposer network without the composite cycle.
+// Each chiplet has a two-router internal NoC and one gateway. The interposer
+// is a dateline-routed directed ring.
+
+topology = hier_chiplet;
+chiplet = 4;
+int_nodes = 1;
+chiplet_routers = 2;
+interposer_routers = 4;
+interposer_latency = 2;
+
+routing_function = dor;
+num_vcs = 2;
+vc_buf_size = 4;
+
+traffic = uniform;
+use_read_write = 0;
+packet_size = 1;
+injection_rate = 0.05;
+
+sim_type = latency;
+sample_period = 1000;
+max_samples = 10;
+warmup_periods = 3;
